@@ -16,13 +16,11 @@ set laststatus=2 " always show status line
 set mouse=a
 set clipboard=unnamedplus
 set ignorecase incsearch smartcase " set hlsearch
+set nobackup " witout swp, swo .. files
 
 " show all character
 set list
 set listchars=tab:→\ ,eol:¬,extends:›,precedes:‹,trail:•,nbsp:␣
-
-set background=dark
-set t_Co=256
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
@@ -30,43 +28,41 @@ call vundle#rc()
 " lLet Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Pretty status line bottom
+" Colors, status line ...
+Plugin 'joshdick/onedark.vim'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-commentary'
-
-Plugin 'vim-ruby/vim-ruby'
-
-"Plugin 'mattn/emmet-vim'
-"Plugin 'Chiel92/vim-autoformat'
 Plugin 'ervandew/supertab'
 
 " Navigation
-" Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 
+" Frontend
+Plugin 'mattn/emmet-vim'
+
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+
 " Python
 Plugin 'davidhalter/jedi-vim'
 
-" Colors
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+" Onedark colorscheme
+let g:onedark_termcolors=16
+let g:onedark_terminal_italics=0 " TODO: change to 1
+colorscheme onedark
 
-" Solarized theme settings
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-colorscheme solarized
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 16
+" Polyglot example using
+" let g:polyglot_disabled = ['css']
 
 " NERDtree
 let NERDTreeShowHidden = 1
@@ -79,6 +75,10 @@ let g:jedi#use_tabs_not_buffers = 0
 
 " air-line
 let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
 " ctrlp
 let g:ctrlp_map = '<C-p>'
@@ -100,11 +100,9 @@ nnoremap <F5> :NERDTree %<CR>
 " insert mode delete line
 imap <c-d> <esc>ddi
 
-
 "" Python
 """""""""""""
 imap <c-i> import ipdb; ipdb.set_trace() ############## TRACE ##############
-
 
 " experiments
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/

@@ -48,8 +48,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'ervandew/supertab'
 
 " Navigation
-Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'scrooloose/nerdtree'
+" Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 
@@ -71,6 +71,7 @@ let g:solarized_termcolors = 16
 " NERDtree
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
+" map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " jedi-vim settings
 let g:jedi#popup_on_dot = 0
@@ -96,5 +97,15 @@ autocmd FileType erb,html,scss,css EmmetInstall
 nnoremap <F5> :NERDTree %<CR>
 "nnoremap <F3> :Autoformat<CR>
 
+" insert mode delete line
+imap <c-d> <esc>ddi
+
+
+"" Python
+"""""""""""""
+imap <c-i> import ipdb; ipdb.set_trace() ############## TRACE ##############
+
+
+" experiments
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'

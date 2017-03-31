@@ -15,9 +15,15 @@ set shiftwidth=2
 set softtabstop=2
 set laststatus=2 " always show status line
 set mouse=a
-set clipboard=unnamedplus
-set ignorecase incsearch smartcase " set hlsearch
-set nobackup " witout swp, swo .. files
+
+set ignorecase incsearch smartcase
+set hlsearch
+
+" witout swp, swo .. files
+set nobackup
+
+" use system clipboard (mac os)
+set clipboard=unnamed
 
 "don't show preview window
 set completeopt-=preview 
@@ -47,6 +53,7 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
+Plugin 'taglist.vim'
 
 " Frontend
 Plugin 'mattn/emmet-vim'
@@ -56,7 +63,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 
 " Python
-Plugin 'klen/python-mode'
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'mitsuhiko/vim-python-combined'
 " Plugin 'hynek/vim-python-pep8-indent'
@@ -100,47 +108,60 @@ autocmd FileType erb,html,scss,css EmmetInstall
 nnoremap <leader>t :NERDTree<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
-" python
-let g:pymode = 1
-let g:pymode_python = 'python3'
-let g:pymode_trim_whitespaces = 1
 
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 110
-let g:pymode_options_colorcolumn = 1
+" YCM
+let g:ycm_python_binary_path = $PYTHON_HOME
 
-let g:pymode_folding = 0
-let g:pymode_indent = 1
-
-let g:pymode_breakpoint = 0
-let g:pymode_breakpoint_bind = '<leader>b'
-
-let g:pymode_motion = 1
-
-let g:pymode_virtualenv = 0
-" let g:pymode_virtualenv_path = $WORKON_HOME
-
-let g:pymode_rope = 1
-let g:pymode_rope_lookup_project = 1
-
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 1
-let g:pymode_rope_completion_bind = '<C-Space>'
-
-let g:pymode_rope_autoimport = 1
-let g:pymode_rope_autoimport_import_after_complete = 1
-let g:pymode_rope_autoimport_bind = '<C-c>ra'
-let g:pymode_rope_organize_imports_bind = '<C-c>ro'
-
-let g:pymode_rope_goto_definition_bind = '<leader>d'
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 
 
+" Taglist
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 50
+" " python
+" let g:pymode = 1
+" let g:pymode_python = 'python3'
+" let g:pymode_trim_whitespaces = 1
+
+" let g:pymode_options = 1
+" let g:pymode_options_max_line_length = 110
+" let g:pymode_options_colorcolumn = 1
+
+" let g:pymode_folding = 0
+" let g:pymode_indent = 1
+
+" let g:pymode_breakpoint = 1
+" let g:pymode_breakpoint_bind = '<leader>b'
+
+" let g:pymode_motion = 1
+
+" let g:pymode_virtualenv = 1
+" " let g:pymode_virtualenv_path = $WORKON_HOME
+
+" let g:pymode_rope = 1
+" let g:pymode_rope_lookup_project = 1
+
+" let g:pymode_rope_completion = 1
+" let g:pymode_rope_complete_on_dot = 1
+" let g:pymode_rope_completion_bind = '<C-Space>'
+
+" let g:pymode_rope_autoimport = 1
+" let g:pymode_rope_autoimport_import_after_complete = 1
+" let g:pymode_rope_autoimport_bind = '<C-c>ra'
+" let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+
+" let g:pymode_rope_goto_definition_bind = '<leader>d'
+" let g:pymode_rope_goto_definition_cmd = 'new'
 
 
 " insert mode delete line
 imap <c-d> <esc>ddi
 
 
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+
 " experiments
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
+ab ip import ipdb; ipdb.set_trace()
+" nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'

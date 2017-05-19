@@ -69,6 +69,9 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'mitsuhiko/vim-python-combined'
 " Plugin 'hynek/vim-python-pep8-indent'
 
+" Fuzzy search
+Plugin 'junegunn/fzf.vim'
+
 " Onedark colorscheme
 let g:onedark_termcolors = 16
 let g:onedark_terminal_italics = 0 " TODO: change to 1

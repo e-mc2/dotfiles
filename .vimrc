@@ -26,7 +26,7 @@ set nobackup
 set clipboard=unnamed
 
 "don't show preview window
-set completeopt-=preview 
+set completeopt-=preview
 
 " show all character
 set list
@@ -61,6 +61,9 @@ Plugin 'mattn/emmet-vim'
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'slim-template/vim-slim'
+Plugin 'christoomey/vim-rfactory'
 
 " Python
 Plugin 'Valloric/YouCompleteMe'
@@ -68,6 +71,12 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'mitsuhiko/vim-python-combined'
 " Plugin 'hynek/vim-python-pep8-indent'
+
+" Automatically removing all trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Setting up filetype for *.slim
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 
 " Onedark colorscheme
 let g:onedark_termcolors = 16
@@ -79,16 +88,8 @@ let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
-" jedi-vim settings
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#use_tabs_not_buffers = 0
-
 " air-line
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='onedark'
-" let g:lightline = {
-"   \ 'colorscheme': 'onedark',
-"   \ }
 
 " ctrlp
 let g:ctrlp_map = '<C-p>'
@@ -108,51 +109,23 @@ autocmd FileType erb,html,scss,css EmmetInstall
 nnoremap <leader>t :NERDTree<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
-
 " YCM
 let g:ycm_python_binary_path = $PYTHON_HOME
-
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-
 
 " Taglist
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 50
-" " python
-" let g:pymode = 1
-" let g:pymode_python = 'python3'
-" let g:pymode_trim_whitespaces = 1
 
-" let g:pymode_options = 1
-" let g:pymode_options_max_line_length = 110
-" let g:pymode_options_colorcolumn = 1
+" Map ctrl-movement keys to window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+" nnoremap <silent> <bs> <C-w><Left>
 
-" let g:pymode_folding = 0
-" let g:pymode_indent = 1
-
-" let g:pymode_breakpoint = 1
-" let g:pymode_breakpoint_bind = '<leader>b'
-
-" let g:pymode_motion = 1
-
-" let g:pymode_virtualenv = 1
-" " let g:pymode_virtualenv_path = $WORKON_HOME
-
-" let g:pymode_rope = 1
-" let g:pymode_rope_lookup_project = 1
-
-" let g:pymode_rope_completion = 1
-" let g:pymode_rope_complete_on_dot = 1
-" let g:pymode_rope_completion_bind = '<C-Space>'
-
-" let g:pymode_rope_autoimport = 1
-" let g:pymode_rope_autoimport_import_after_complete = 1
-" let g:pymode_rope_autoimport_bind = '<C-c>ra'
-" let g:pymode_rope_organize_imports_bind = '<C-c>ro'
-
-" let g:pymode_rope_goto_definition_bind = '<leader>d'
-" let g:pymode_rope_goto_definition_cmd = 'new'
-
+" Change semicolon to colon
+map ; :
 
 " insert mode delete line
 imap <c-d> <esc>ddi

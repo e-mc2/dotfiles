@@ -129,7 +129,7 @@ let Tlist_WinWidth = 50
 
 " Fzf
 " let g:fzf_command_prefix = 'Fzf'
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <C-f> :Find<CR>
 
 " Map ctrl-movement keys to window switching

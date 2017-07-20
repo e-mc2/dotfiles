@@ -54,6 +54,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'taglist.vim'
+Plugin 'matze/vim-move'
 
 " Frontend
 Plugin 'mattn/emmet-vim'
@@ -72,14 +73,15 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'mitsuhiko/vim-python-combined'
 " Plugin 'hynek/vim-python-pep8-indent'
 
+" Fuzzy search
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Setting up filetype for *.slim
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
-
-" Fuzzy search
-Plugin 'junegunn/fzf.vim'
 
 " Onedark colorscheme
 let g:onedark_termcolors = 16
@@ -90,6 +92,11 @@ colorscheme onedark
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" vim-move
+let g:move_key_modifier = 'A'
+map ∆ <A-j>
+map ˚ <A-k>
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -120,6 +127,11 @@ nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 50
 
+" Fzf
+" let g:fzf_command_prefix = 'Fzf'
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+nmap <C-f> :Find<CR>
+
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -139,5 +151,6 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 
 " experiments
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>f :Find <C-r><C-w><CR>
 ab ip import ipdb; ipdb.set_trace()
 " nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'

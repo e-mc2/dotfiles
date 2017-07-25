@@ -25,7 +25,7 @@ set nobackup
 " use system clipboard (mac os)
 set clipboard=unnamed
 
-"don't show preview window
+" don't show preview window
 set completeopt-=preview
 
 " show all character
@@ -41,6 +41,7 @@ Plugin 'gmarik/Vundle.vim'
 " Colors, status line ...
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
@@ -68,6 +69,7 @@ Plugin 'christoomey/vim-rfactory'
 
 " Python
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'mitsuhiko/vim-python-combined'
@@ -76,6 +78,11 @@ Plugin 'Valloric/YouCompleteMe'
 " Fuzzy search
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+
+" Linters
+Plugin 'scrooloose/syntastic'
+" Plugin 'w0rp/ale'
+" Plugin 'nvie/vim-flake8'
 
 " Automatically removing all trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -117,18 +124,20 @@ autocmd FileType erb,html,scss,css EmmetInstall
 
 " NERDTree
 nnoremap <leader>t :NERDTree<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
 
 " YCM
 let g:ycm_python_binary_path = $PYTHON_HOME
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+
+" virtualenv
+let g:virtualenv_directory = $WORKON_HOME
+let g:virtualenv_stl_format = '[%n]'
 
 " Taglist
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 50
 
 " Fzf
-" let g:fzf_command_prefix = 'Fzf'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <C-f> :Find<CR>
 
@@ -147,6 +156,7 @@ imap <c-d> <esc>ddi
 
 
 nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F2> :VirtualEnvActivate <tab>
 
 
 " experiments

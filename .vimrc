@@ -56,6 +56,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'taglist.vim'
 Plugin 'matze/vim-move'
+Plugin 'romgrk/winteract.vim'
 
 " Frontend
 Plugin 'mattn/emmet-vim'
@@ -164,3 +165,6 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>f :Find <C-r><C-w><CR>
 ab ip import ipdb; ipdb.set_trace()
 " nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
+
+nmap <leader>w :InteractiveWindow<CR>
+

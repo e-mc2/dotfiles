@@ -124,7 +124,8 @@ autocmd FileType erb,html,scss,css EmmetInstall
 " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " NERDTree
-nnoremap <leader>t :NERDTree<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
 
 " YCM
 let g:ycm_python_binary_path = $PYTHON_HOME

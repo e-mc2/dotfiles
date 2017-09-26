@@ -42,6 +42,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tmux-plugins/vim-tmux'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'

@@ -5,7 +5,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
-set number
+set number relativenumber
 set expandtab
 set autoindent
 
@@ -15,6 +15,7 @@ set shiftwidth=2
 set softtabstop=2
 set laststatus=2 " always show status line
 set mouse=a
+set colorcolumn=110
 
 set ignorecase incsearch smartcase
 set hlsearch
@@ -77,6 +78,9 @@ Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'mitsuhiko/vim-python-combined'
 " Plugin 'hynek/vim-python-pep8-indent'
 
+" Run tests
+Plugin 'janko-m/vim-test'
+
 " Fuzzy search
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
@@ -100,6 +104,8 @@ colorscheme onedark
 " NERDtree
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " vim-move
@@ -124,25 +130,31 @@ let g:user_emmet_install_global = 0
 autocmd FileType erb,html,scss,css EmmetInstall
 " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-" NERDTree
-nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeFind<CR>
-
-" YCM
-let g:ycm_python_binary_path = $PYTHON_HOME
-nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-
 " virtualenv
 let g:virtualenv_directory = $WORKON_HOME
 let g:virtualenv_stl_format = '[%n]'
+
+" test.vim
+nmap <silent> <leader>n :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " Taglist
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 50
 
+" YCM
+let g:ycm_python_binary_path = $PYTHON_HOME
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+
 " Fzf
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <C-f> :Find<CR>
+
+" winteract.vim
+nmap <leader>w :InteractiveWindow<CR>
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
@@ -157,16 +169,10 @@ map ; :
 " insert mode delete line
 imap <c-d> <esc>ddi
 
-
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F2> :VirtualEnvActivate <tab>
-
 
 " experiments
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>f :Find <C-r><C-w><CR>
 ab ip import ipdb; ipdb.set_trace()
-" nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
-
-nmap <leader>w :InteractiveWindow<CR>
-

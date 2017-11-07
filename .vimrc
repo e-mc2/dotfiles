@@ -59,6 +59,7 @@ Plugin 'rking/ag.vim'
 Plugin 'taglist.vim'
 Plugin 'matze/vim-move'
 Plugin 'romgrk/winteract.vim'
+Plugin 'tpope/vim-dispatch'
 
 " Frontend
 Plugin 'mattn/emmet-vim'
@@ -101,6 +102,9 @@ let g:onedark_termcolors = 16
 let g:onedark_terminal_italics = 0 " TODO: change to 1
 colorscheme onedark
 
+" Leader mapping
+let mapleader = "\<Space>"
+
 " NERDtree
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
@@ -135,6 +139,9 @@ let g:virtualenv_directory = $WORKON_HOME
 let g:virtualenv_stl_format = '[%n]'
 
 " test.vim
+let test#strategy = 'dispatch'
+let test#python#runner = 'pytest'
+let test#python#pytest#options = '-s -p no:cacheprovider'
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>

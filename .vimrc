@@ -59,7 +59,10 @@ Plugin 'rking/ag.vim'
 Plugin 'taglist.vim'
 Plugin 'matze/vim-move'
 Plugin 'romgrk/winteract.vim'
+
 Plugin 'tpope/vim-dispatch'
+Plugin 'reinh/vim-makegreen'
+Plugin '5long/pytest-vim-compiler'
 
 " Frontend
 Plugin 'mattn/emmet-vim'
@@ -139,14 +142,24 @@ let g:virtualenv_directory = $WORKON_HOME
 let g:virtualenv_stl_format = '[%n]'
 
 " test.vim
-let test#strategy = 'dispatch'
+" function MakeGreenStrategy(cmd) abort
+"     execute '!' .a:cmd
+"     call MakeGreen()
+" endfunction
+
+" let g:test#custom_strategies = {'makegreen': function('MakeGreenStrategy')}
+let g:test#strategy = 'makegreen'
 let test#python#runner = 'pytest'
 let test#python#pytest#options = '-s -p no:cacheprovider'
+
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+" autocmd FileType python compiler pytest
+
 
 " Taglist
 let Tlist_Use_Right_Window = 1
@@ -157,7 +170,16 @@ let g:ycm_python_binary_path = $PYTHON_HOME
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 
 " Fzf
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading
+  \       --fixed-strings --ignore-case --hidden
+  \       --follow --glob "!.git/*" --color "always" '
+  \   .shellescape(
+  \     <q-args>), 1,
+  \     <bang>0 ? fzf#vim#with_preview('up:60%')
+  \             : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \     <bang>0)
 nmap <C-f> :Find<CR>
 
 " winteract.vim

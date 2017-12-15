@@ -112,7 +112,7 @@ let mapleader = "\<Space>"
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <leader>nn :NERDTreeFind<CR>
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " vim-move
@@ -140,6 +140,20 @@ autocmd FileType erb,html,scss,css EmmetInstall
 " virtualenv
 let g:virtualenv_directory = $WORKON_HOME
 let g:virtualenv_stl_format = '[%n]'
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,E225 --max-line-length=120'
+
 
 " test.vim
 " function MakeGreenStrategy(cmd) abort

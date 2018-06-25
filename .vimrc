@@ -29,6 +29,10 @@ set clipboard=unnamed
 " don't show preview window
 set completeopt-=preview
 
+" look for the ctags index file in the source directory
+" set tags=tags
+set tags=./tags,tags;$HOME
+
 " show all character
 set list
 set listchars=tab:→\ ,eol:¬,extends:›,precedes:‹,trail:•,nbsp:␣
@@ -110,7 +114,7 @@ let mapleader = "\<Space>"
 
 " NERDtree
 let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$']
+let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.swo$', '\.pyc$']
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
@@ -180,7 +184,7 @@ let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 50
 
 " YCM
-let g:ycm_python_binary_path = $PYTHON_HOME
+let g:ycm_python_binary_path = 'python'
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 
 " Fzf
@@ -188,7 +192,7 @@ command! -bang -nargs=* Find
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading
   \       --fixed-strings --ignore-case --hidden
-  \       --follow --glob "!.git/*" --color "always" '
+  \       --follow --glob "!.git/*" --glob "!tags/*" --color "always" '
   \   .shellescape(
   \     <q-args>), 1,
   \     <bang>0 ? fzf#vim#with_preview('up:60%')

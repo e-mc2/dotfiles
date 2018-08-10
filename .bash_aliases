@@ -10,5 +10,5 @@ alias ds='docker start'
 alias dst='docker stop'
 alias db='docker build'
 
-alias deval='eval $(docker-machine env $0)'
 alias drmi0='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+alias dkall='docker rm $(docker ps -a -q)'

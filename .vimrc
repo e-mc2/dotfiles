@@ -16,6 +16,7 @@ set softtabstop=2
 set laststatus=2 " always show status line
 set mouse=a
 set colorcolumn=110
+set diffopt+=vertical
 
 set ignorecase incsearch smartcase
 set hlsearch
@@ -80,7 +81,8 @@ Plugin 'christoomey/vim-rfactory'
 
 " Python
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'direnv/direnv.vim'
+" Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'mitsuhiko/vim-python-combined'
@@ -130,6 +132,7 @@ let g:airline_powerline_fonts = 1
 " ctrlp
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
+nmap <Leader>b :CtrlPBuffer<CR>
 
 " surround erb
 let g:surround_{char2nr('=')} = "<%= \r %>" " yss=
@@ -152,11 +155,26 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" let g:syntastic_mode_map = { 'mode': ‘passive’ }
+
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E225 --max-line-length=120'
+let g:syntastic_python_flake8_args='--ignore=E501,E225,W504 --max-line-length=110'
+" let g:syntastic_python_bandit_fname = ['/path/to/project']
+" let g:syntastic_python_bandit_args = '-r'
+
+nmap <leader>sc :SyntasticCheck<CR>
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
 
 
 " test.vim
@@ -198,10 +216,14 @@ command! -bang -nargs=* Find
   \     <bang>0 ? fzf#vim#with_preview('up:60%')
   \             : fzf#vim#with_preview('right:50%:hidden', '?'),
   \     <bang>0)
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 nmap <C-f> :Find<CR>
 
 " winteract.vim
 nmap <leader>w :InteractiveWindow<CR>
+
+" show list of errors
+nmap <leader>e :Errors<CR>
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
@@ -215,6 +237,13 @@ map ; :
 
 " insert mode delete line
 imap <c-d> <esc>ddi
+
+" copy current files path to clipboard
+nmap cp :let @+ = expand("%") <cr>
+
+" switch buffers
+nnoremap <C-Tab> :bn<CR>
+nnoremap <C-S-Tab> :bp<CR>
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F2> :VirtualEnvActivate <tab>

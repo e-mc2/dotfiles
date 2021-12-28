@@ -17,6 +17,7 @@ set laststatus=2 " always show status line
 set mouse=a
 set colorcolumn=110
 set diffopt+=vertical
+set encoding=utf-8
 
 set ignorecase incsearch smartcase
 set hlsearch
@@ -38,6 +39,11 @@ set tags=./tags,tags;$HOME
 set list
 set listchars=tab:→\ ,eol:¬,extends:›,precedes:‹,trail:•,nbsp:␣
 
+" set font for macvim
+set guifont=Inconsolata\ for\ Powerline:h14
+" remove all scrollbars for macvim
+set guioptions=
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -46,6 +52,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Colors, status line ...
 Plugin 'joshdick/onedark.vim'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux'
@@ -82,6 +89,7 @@ Plugin 'christoomey/vim-rfactory'
 " Python
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'direnv/direnv.vim'
+Plugin 'psf/black'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
@@ -107,9 +115,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 
 " Onedark colorscheme
-let g:onedark_termcolors = 16
-let g:onedark_terminal_italics = 0 " TODO: change to 1
-colorscheme onedark
+" let g:onedark_termcolors = 16
+" let g:onedark_terminal_italics = 0 " TODO: change to 1
+colorscheme nord
 
 " Leader mapping
 let mapleader = "\<Space>"
@@ -128,6 +136,8 @@ map ˚ <A-k>
 
 " air-line
 let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " ctrlp
 let g:ctrlp_map = '<C-p>'
@@ -161,7 +171,7 @@ let g:syntastic_check_on_wq = 0
 " let g:syntastic_mode_map = { 'mode': ‘passive’ }
 
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E225,W504 --max-line-length=110'
+let g:syntastic_python_flake8_args='--ignore=E501,E225,W504,W503 --max-line-length=110'
 " let g:syntastic_python_bandit_fname = ['/path/to/project']
 " let g:syntastic_python_bandit_args = '-r'
 
@@ -196,6 +206,9 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " autocmd FileType python compiler pytest
 
+" black
+let g:black_linelength = 110
+let g:black_skip_string_normalization = 1
 
 " Taglist
 let Tlist_Use_Right_Window = 1
@@ -216,6 +229,7 @@ command! -bang -nargs=* Find
   \     <bang>0 ? fzf#vim#with_preview('up:60%')
   \             : fzf#vim#with_preview('right:50%:hidden', '?'),
   \     <bang>0)
+set rtp+=/usr/local/opt/fzf
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 nmap <C-f> :Find<CR>
 

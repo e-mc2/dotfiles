@@ -33,10 +33,11 @@ brew: | $(BREW)
 	brew update
 
 $(BREW):
-	@curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 
 bundle: | brew
-	brew bundle --file
+	brew bundle --file "$(PWD)/.config/homebrew/Brewfile"
 
 clean:
 	brew cleanup

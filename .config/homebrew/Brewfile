@@ -31,6 +31,6 @@ cask "postgres-unofficial"
 cask "postman"
 cask "telegram"
 cask "visual-studio-code"
-casl "yandex-disk"
+cask "yandex-disk"
 
 mas "magnet"

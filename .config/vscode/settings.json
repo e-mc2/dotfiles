@@ -1,0 +1,68 @@
+{
+    "files.exclude": {
+        ".*_cache": true,
+        ".noseids": true,
+        "**/__pycache__": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Nord",
+    "workbench.editor.wrapTabs": true,
+
+    "search.mode": "reuseEditor",
+
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.inlineSuggest.enabled": true,
+    "editor.linkedEditing": true,
+
+    "debug.toolBarLocation": "docked",
+
+    "testing.defaultGutterClickAction": "contextMenu",
+
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.external.osxExec": "iTerm.app",
+
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=110",
+        "--ignore=E402,F841,F401,E302,E305,W503",
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "110",
+        "--skip-string-normalization"
+    ],
+    "[python]": {
+        "gitlens.codeLens.symbolScopes": [
+            "!Module"
+        ],
+        "editor.wordBasedSuggestions": false,
+        "editor.rulers": [80, 110]
+    },
+
+    "go.lintTool":"golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+
+    // Extensions Settings
+    "redhat.telemetry.enabled": false,
+    "code-eol.newlineCharacter": "¬",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "cSpell.language": "en,ru",
+
+    // Auto-generated Settings
+    "git.confirmSync": false,
+    "extensions.ignoreRecommendations": true,
+    "window.zoomLevel": 1
+
+}

@@ -1,6 +1,4 @@
-BREW := /opt/homebrew/bin/brew
-
-.PHONEY: install_brew brew clean uninstall_brew uninstall_packages
+.PHONEY: bundle links vscode
 default: help
 
 ## help: show list of available commands.
@@ -10,24 +8,23 @@ help : Makefile
 	@echo "+--------------------+\n"
 	@cat Makefile | grep "##" | sed -n 's/^## /make /p' | column -t -s ':' && echo ""
 
-## install_brew: install homebrew, packages and casks.
-install_brew: | bundle clean
+## bundle: install homebrew's packages, casks and macs.
+bundle:
+	brew bundle --file "$(PWD)/.config/homebrew/Brewfile"
+	brew cleanup
+	brew
 
-brew: | $(BREW)
-	$(BREW) update
+## links: linking configs for zsh, tmux, vscode, nvim, alacritty.
+links:
+	ln -s "$(PWD)/.zshrc" ~/.zshrc
+	ln -s "$(PWD)/.bash_aliases" ~/.bash_aliases
+	ln -s "$(PWD)/.config/tmux/.tmux.conf" ~/.tmux.conf
+	ln -s "$(PWD)/.config/nvim" ~/.config/nvim
+	ln -s "$(PWD)/.config/alacritty" ~/.config/alacritty
+	ln -s "$(PWD)/.config/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+	ln -s "$(PWD)/.config/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
+	ln -s "$(PWD)/.config/vscode/snippets" ~/Library/Application\ Support/Code/User
 
-$(BREW):
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-
-bundle: | brew
-	$(BREW) bundle --file "$(PWD)/.config/homebrew/Brewfile"
-
-clean:
-	$(BREW) cleanup
-	$(BREW) cask cleanup
-
-uninstall_brew:
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh | bash
-
-uninstall_packages:
-	$(BREW) remove --force --ignore-dependencies $(shell brew list)
+## vscode: install extensions into vscode.
+vscode:
+	cat $(PWD)/.config/vscode/extensions.list | xargs -L1 code --install-extension

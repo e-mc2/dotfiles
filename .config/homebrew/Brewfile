@@ -34,3 +34,4 @@ cask "visual-studio-code"
 cask "yandex-disk"
 
 mas "magnet", id: 441258766
+mas "flycut", id: 442160987

@@ -10,6 +10,7 @@ help : Makefile
 
 ## bundle: install homebrew's packages, casks and macs.
 bundle:
+	brew tap homebrew/cask-fonts
 	brew bundle --file "$(PWD)/.config/homebrew/Brewfile"
 	brew cleanup
 	brew

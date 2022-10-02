@@ -22,10 +22,10 @@ make bundle
 
 ```bash
 # add `zsh` to the system /etc/shells
-sudo echo '/usr/local/bin/zsh' >> /etc/shells
+sudo sh -c "echo $(which zsh) >> /etc/shells"
 
 # use the next command line to change shell
-chsh -s /usr/local/bin/zsh
+chsh -s $(which zsh)
 
 # confirm whether it has changed
 dscl . -read /Users/$USERNAME UserShell

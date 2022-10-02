@@ -13,7 +13,6 @@ bundle:
 	brew tap homebrew/cask-fonts
 	brew bundle --file "$(PWD)/.config/homebrew/Brewfile"
 	brew cleanup
-	brew
 
 ## links: linking configs for zsh, tmux, vscode, nvim, alacritty.
 links:

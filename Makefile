@@ -24,7 +24,7 @@ links:
 	ln -sfn "$(PWD)/.config/alacritty" ~/.config/alacritty
 	ln -sf "$(PWD)/.config/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
 	ln -sf "$(PWD)/.config/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
-	ln -sf "$(PWD)/.config/vscode/snippets" ~/Library/Application\ Support/Code/User
+	ln -sfn "$(PWD)/.config/vscode/snippets" ~/Library/Application\ Support/Code/User/snippets
 
 ## vscode: install extensions into vscode.
 vscode:

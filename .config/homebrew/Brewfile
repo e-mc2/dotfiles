@@ -29,7 +29,7 @@ cask "iterm2"
 cask "keepingyouawake"
 cask "postgres-unofficial"
 cask "postman"
-cask "telegram"
+cask "telegram-desktop"
 cask "visual-studio-code"
 cask "yandex-disk"
 

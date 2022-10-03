@@ -56,5 +56,6 @@ make vscode
 .aws
 .ssh
 .zsh_history
+.gitconfig
 pgp keys
 ```

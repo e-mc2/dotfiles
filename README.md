@@ -22,14 +22,14 @@ make bundle
 
 ```bash
 # add `zsh` to the system /etc/shells
-sudo sh -c "echo $(which zsh) >> /etc/shells"
+sudo sh -c "echo /opt/homebrew/bin/zsh >> /etc/shells"
 
 # use the next command line to change shell
-chsh -s $(which zsh)
+chsh -s /opt/homebrew/bin/zsh
 
 # confirm whether it has changed
 dscl . -read /Users/$USERNAME UserShell
-UserShell: /usr/local/bin/zsh
+UserShell: /opt/homebrew/bin/zsh
 ```
 
 4. Install [Oh-my-zsh](https://ohmyz.sh/) and plugins:

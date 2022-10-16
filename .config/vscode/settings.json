@@ -11,6 +11,8 @@
     "workbench.colorTheme": "Nord",
     "workbench.editor.wrapTabs": true,
 
+    "explorer.autoReveal": "focusNoScroll",
+
     "search.mode": "reuseEditor",
 
     "editor.fontFamily": "JetBrains Mono",

@@ -1,3 +1,5 @@
+current_folder := $(abspath $(PWD))
+
 .PHONEY: bundle links vscode
 default: help
 
@@ -11,21 +13,21 @@ help : Makefile
 ## bundle: install homebrew's packages, casks and macs.
 bundle:
 	brew tap homebrew/cask-fonts
-	brew bundle --file "$(PWD)/.config/homebrew/Brewfile"
+	brew bundle --file $(current_folder)/.config/homebrew/Brewfile
 	brew cleanup
 
 ## links: linking configs for zsh, tmux, vscode, nvim, alacritty.
 links:
 	mkdir -p ~/.config
-	ln -sf "$(PWD)/.zshrc" ~/.zshrc
-	ln -sf "$(PWD)/.bash_aliases" ~/.bash_aliases
-	ln -sf "$(PWD)/.config/tmux/.tmux.conf" ~/.tmux.conf
-	ln -sfn "$(PWD)/.config/nvim" ~/.config/nvim
-	ln -sfn "$(PWD)/.config/alacritty" ~/.config/alacritty
-	ln -sf "$(PWD)/.config/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
-	ln -sf "$(PWD)/.config/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
-	ln -sfn "$(PWD)/.config/vscode/snippets" ~/Library/Application\ Support/Code/User/snippets
+	ln -sf $(current_folder)/.zshrc ~/.zshrc
+	ln -sf $(current_folder)/.bash_aliases ~/.bash_aliases
+	ln -sf $(current_folder)/.config/tmux/.tmux.conf ~/.tmux.conf
+	ln -sfn $(current_folder)/.config/nvim ~/.config/nvim
+	ln -sfn $(current_folder)/.config/alacritty ~/.config/alacritty
+	ln -sf $(current_folder)/.config/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+	ln -sf $(current_folder)/.config/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -sfn $(current_folder)/.config/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
 
 ## vscode: install extensions into vscode.
 vscode:
-	cat $(PWD)/.config/vscode/extensions.list | xargs -L1 code --install-extension
+	cat $(current_folder)/.config/vscode/extensions.list | xargs -L1 code --install-extension

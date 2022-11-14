@@ -31,6 +31,10 @@
 
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=C0111",
+        "--load-plugins=django",
+     ],
     "python.linting.flake8Args": [
         "--max-line-length=110",
         "--ignore=E402,F841,F401,E302,E305,W503",

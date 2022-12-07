@@ -59,3 +59,9 @@ make vscode
 .gitconfig
 pgp keys
 ```
+
+7. Set defaults for MacOS:
+
+```bash
+defaults write -g AppleFontSmoothing -int 0
+```

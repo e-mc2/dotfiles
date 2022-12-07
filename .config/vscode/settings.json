@@ -26,8 +26,8 @@
     "testing.defaultGutterClickAction": "contextMenu",
 
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.external.osxExec": "Alacritty.app",
 
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,

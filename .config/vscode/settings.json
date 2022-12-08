@@ -26,7 +26,7 @@
     "testing.defaultGutterClickAction": "contextMenu",
 
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.external.osxExec": "Alacritty.app",
 
     "python.linting.enabled": true,

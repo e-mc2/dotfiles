@@ -4,7 +4,6 @@ arcticicestudio.nord-visual-studio-code
 ckolkman.vscode-postgres
 cstrap.python-snippets
 daiyy.quick-html-previewer
-dandrii.gherkin-table-formatter
 deerawan.vscode-dash
 donjayamanne.githistory
 eamodio.gitlens
@@ -15,9 +14,6 @@ GitHub.vscode-pull-request-github
 GitLab.gitlab-workflow
 golang.go
 hediet.debug-visualizer
-HookyQR.beautify
-iocave.customize-ui
-iocave.monkey-patch
 johnpapa.vscode-peacock
 mechatroner.rainbow-csv
 medo64.render-crlf
@@ -30,14 +26,12 @@ ms-toolsai.jupyter
 ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
 ms-vscode.makefile-tools
-ms-vscode.test-adapter-converter
 phplasma.csv-to-table
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 streetsidesoftware.code-spell-checker-russian
 tomoki1207.pdf
 Tyriar.sort-lines
-wix.vscode-import-cost
 Yummygum.city-lights-icon-vsc
 yzhang.markdown-all-in-one
 zxh404.vscode-proto3

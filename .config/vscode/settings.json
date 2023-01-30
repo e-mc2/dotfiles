@@ -32,8 +32,7 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
-        "--disable=C0111",
-        "--load-plugins=django",
+        "--disable=C0111 --load-plugins=django"
      ],
     "python.linting.flake8Args": [
         "--max-line-length=110",
@@ -49,6 +48,9 @@
         "gitlens.codeLens.symbolScopes": [
             "!Module"
         ],
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
         "editor.wordBasedSuggestions": false,
         "editor.rulers": [80, 110]
     },

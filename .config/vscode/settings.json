@@ -6,59 +6,60 @@
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-
-    "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Nord",
     "workbench.editor.wrapTabs": true,
-
+    "workbench.tree.enableStickyScroll": true,
     "explorer.autoReveal": "focusNoScroll",
-
-    "search.mode": "reuseEditor",
-
+    "search.mode": "newEditor",
     "editor.fontFamily": "JetBrains Mono",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
     "editor.inlineSuggest.enabled": true,
     "editor.linkedEditing": true,
-
     "debug.toolBarLocation": "docked",
-
     "testing.defaultGutterClickAction": "contextMenu",
-
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.external.osxExec": "Alacritty.app",
 
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": [
-        "--disable=C0111 --load-plugins=django"
-     ],
-    "python.linting.flake8Args": [
-        "--max-line-length=110",
-        "--ignore=E402,F841,F401,E302,E305,W503",
-    ],
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "110",
-        "--skip-string-normalization"
-    ],
+    // Python Settings
+    "python.languageServer": "Jedi",
+
     "[python]": {
         "gitlens.codeLens.symbolScopes": [
             "!Module"
         ],
+        "editor.formatOnType": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         },
-        "editor.wordBasedSuggestions": false,
-        "editor.rulers": [80, 110]
+        "editor.wordBasedSuggestions": "off",
+        "editor.rulers": [
+            80,
+            110
+        ],
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
     },
+    "black-formatter.args": [
+        "--line-length=110",
+        "--skip-string-normalization"
+    ],
+    "pylint.importStrategy": "useBundled",
+    "pylint.path": ["${interpreter}", "-m", "pylint"],
+    "pylint.args": [
+        "--disable=C0111",
+        "--rcfile=${workspaceFolder}/.pylintrc"
+    ],
 
-    "go.lintTool":"golangci-lint",
+    // Go Settings
+    "go.lintTool": "golangci-lint",
     "go.lintFlags": [
         "--fast"
     ],
+
+    // Experimental
+    "multiDiffEditor.experimental.enabled": true,
 
     // Extensions Settings
     "redhat.telemetry.enabled": false,
@@ -67,10 +68,21 @@
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
     "cSpell.language": "en,ru",
+    "github.copilot.editor.enableCodeActions": false,
 
     // Auto-generated Settings
     "git.confirmSync": false,
     "extensions.ignoreRecommendations": true,
-    "window.zoomLevel": 1
-
+    "editor.largeFileOptimizations": false,
+    "explorer.confirmDragAndDrop": false,
+    "notebook.lineNumbers": "on",
+    "editor.accessibilitySupport": "off",
+    "explorer.confirmDelete": false,
+    "notebook.output.textLineLimit": 300,
+    "notebook.output.scrolling": true,
+    "workbench.activityBar.location": "hidden",
+    "markdown.marp.enableHtml": true,
+    "markdown.marp.pdf.noteAnnotations": true,
+    "window.zoomLevel": 1,
+    "go.toolsManagement.autoUpdate": true,
 }

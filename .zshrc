@@ -148,6 +148,11 @@ eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# Golang stuff
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/Applications/GoLand.app/Contents/MacOS/
+
 # Oh-my-zsh plugins settings
 zstyle ':completion:*' menu select
 

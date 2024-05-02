@@ -3,5 +3,9 @@
     {
         "key": "cmd+e",
         "command": "workbench.files.action.showActiveFileInExplorer"
-    }
+    },
+    {
+        "key": "ctrl+f",
+        "command": "editor.action.quickFix"
+    },
 ]

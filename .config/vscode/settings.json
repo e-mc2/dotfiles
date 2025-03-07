@@ -45,11 +45,12 @@
         "--line-length=110",
         "--skip-string-normalization"
     ],
-    "pylint.importStrategy": "useBundled",
-    "pylint.path": ["${interpreter}", "-m", "pylint"],
+    "pylint.importStrategy": "fromEnvironment",
+    // "pylint.path": ["${interpreter}", "-m", "pylint"],
     "pylint.args": [
         "--disable=C0111",
-        "--rcfile=${workspaceFolder}/.pylintrc"
+        "--rcfile=${workspaceFolder}/.pylintrc",
+        // "--init-hook=import sys; sys.path.append('./')"
     ],
 
     // Go Settings
@@ -57,6 +58,12 @@
     "go.lintFlags": [
         "--fast"
     ],
+
+    // Rust Settings
+    "files.readonlyInclude": {
+        "**/.cargo/registry/src/**/*.rs": true,
+        "**/lib/rustlib/src/rust/library/**/*.rs": true,
+    },
 
     // Experimental
     "multiDiffEditor.experimental.enabled": true,
@@ -85,4 +92,12 @@
     "markdown.marp.pdf.noteAnnotations": true,
     "window.zoomLevel": 1,
     "go.toolsManagement.autoUpdate": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "gitlab.duo.enabledWithoutGitlabProject": false,
+    "gitlab.duoChat.enabled": false,
+    "gitlab.duoCodeSuggestions.enabled": false,
+    "gitlab.keybindingHints.enabled": false,
+    "gitlab.duoCodeSuggestions.openTabsContext": false,
+    "debug.disassemblyView.showSourceCode": false,
+    "chat.experimental.statusIndicator.enabled": true,
 }
